@@ -128,8 +128,8 @@ and stack traces if you are encountering crashes.
 
 Release Notes
 -------------
-v0.3.0: added support for footer views, explicitly blocked support for header views
-v0.2.0: converted to Android library project
+- v0.3.0: added support for footer views, explicitly blocked support for header views
+- v0.2.0: converted to Android library project
 
 Bear in mind that the person who converted `TouchInterceptor`
 into `TouchListView` does not fully understand the original
