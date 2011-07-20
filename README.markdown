@@ -88,6 +88,12 @@ There is also a `TouchListView.DragListener` that you can register
 via `setDragListener()`, if you want to know when the user
 has initiated a drag operation.
 
+**NOTE #2**: You cannot use `addHeaderView()` with `TouchListView` due
+to some compatibility issues. You *can* use `addFooterView()` with
+`TouchListView`, but the footer rows cannot contain a widget with
+the `android:id` value you specified for the `grabber` attribute (i.e.,
+they have to be distinguishable from regular draggable rows).
+
 Dependencies
 ------------
 This depends upon the `CWAC-Parcel` JAR for accessing
@@ -98,9 +104,8 @@ is included in this GitHub repo for convenience.
 
 Version
 -------
-This is version v0.2.0 of this module, meaning it is pretty darn
-new, though the underlying Android open source code has been
-in use for quite some time.
+This is version v0.3.0 of this module, meaning it is slowly gaining
+acceptance.
 
 Demo
 ----
@@ -123,6 +128,7 @@ and stack traces if you are encountering crashes.
 
 Release Notes
 -------------
+v0.3.0: added support for footer views, explicitly blocked support for header views
 v0.2.0: converted to Android library project
 
 Bear in mind that the person who converted `TouchInterceptor`
