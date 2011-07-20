@@ -1,16 +1,16 @@
 package com.commonsware.cwac.tlv.demo;
 
-import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import android.app.ListActivity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Arrays;
+
 import com.commonsware.cwac.tlv.TouchListView;
 
 public class TouchListViewDemo extends ListActivity {
@@ -26,11 +26,14 @@ public class TouchListViewDemo extends ListActivity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.main);
+
+		TouchListView tlv=(TouchListView)getListView();
+		TextView footer=new TextView(this);
 		
+		footer.setText("this is not draggable either");
+		tlv.addFooterView(footer);		
 		adapter=new IconicAdapter();
 		setListAdapter(adapter);
-		
-		TouchListView tlv=(TouchListView)getListView();
 		
 		tlv.setDropListener(onDrop);
 		tlv.setRemoveListener(onRemove);

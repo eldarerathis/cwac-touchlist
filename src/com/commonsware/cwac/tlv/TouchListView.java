@@ -86,6 +86,16 @@ public class TouchListView extends ListView {
 			a.recycle();
 		}
   }
+	
+	@Override
+	final public void addHeaderView (View v, Object data, boolean isSelectable) {
+		throw new RuntimeException("Headers are not supported with TouchListView");
+	}
+	
+	@Override
+	final public void addHeaderView (View v) {
+		throw new RuntimeException("Headers are not supported with TouchListView");
+	}
     
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
@@ -123,37 +133,47 @@ public class TouchListView extends ListView {
 									if (itemnum == AdapterView.INVALID_POSITION) {
 											break;
 									}
-									ViewGroup item = (ViewGroup) getChildAt(itemnum - getFirstVisiblePosition());
-									mDragPoint = y - item.getTop();
-									mCoordOffset = ((int)ev.getRawY()) - y;
-									View dragger = item.findViewById(grabberId);
-									Rect r = mTempRect;
-//									dragger.getDrawingRect(r);
 									
-									r.left=dragger.getLeft();
-									r.right=dragger.getRight();
-									r.top=dragger.getTop();
-									r.bottom=dragger.getBottom();									
+									View item = (View) getChildAt(itemnum - getFirstVisiblePosition());
 									
-									if ((r.left<x) && (x<r.right)) {
-											item.setDrawingCacheEnabled(true);
-											// Create a copy of the drawing cache so that it does not get recycled
-											// by the framework when the list tries to clean up memory
-											Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
-											startDragging(bitmap, y);
-											mDragPos = itemnum;
-											mFirstDragPos = mDragPos;
-											mHeight = getHeight();
-											int touchSlop = mTouchSlop;
-											mUpperBound = Math.min(y - touchSlop, mHeight / 3);
-											mLowerBound = Math.max(y + touchSlop, mHeight * 2 /3);
-											return false;
+									if (isDraggableRow(item)) {
+										mDragPoint = y - item.getTop();
+										mCoordOffset = ((int)ev.getRawY()) - y;
+										View dragger = item.findViewById(grabberId);
+										Rect r = mTempRect;
+//										dragger.getDrawingRect(r);
+									
+										r.left=dragger.getLeft();
+										r.right=dragger.getRight();
+										r.top=dragger.getTop();
+										r.bottom=dragger.getBottom();									
+										
+										if ((r.left<x) && (x<r.right)) {
+												item.setDrawingCacheEnabled(true);
+												// Create a copy of the drawing cache so that it does not get recycled
+												// by the framework when the list tries to clean up memory
+												Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
+												startDragging(bitmap, y);
+												mDragPos = itemnum;
+												mFirstDragPos = mDragPos;
+												mHeight = getHeight();
+												int touchSlop = mTouchSlop;
+												mUpperBound = Math.min(y - touchSlop, mHeight / 3);
+												mLowerBound = Math.max(y + touchSlop, mHeight * 2 /3);
+												return false;
+										}
+										
+										mDragView = null;
 									}
-									mDragView = null;
+									
 									break;
 					}
 			}
 			return super.onInterceptTouchEvent(ev);
+	}
+	
+	protected boolean isDraggableRow(View view) {
+    return(view.findViewById(grabberId)!=null);
 	}
 	
 	/*
@@ -216,10 +236,13 @@ public class TouchListView extends ListView {
 									break;
 							}
 					}
-					ViewGroup.LayoutParams params = v.getLayoutParams();
-					params.height = mItemHeightNormal;
-					v.setLayoutParams(params);
-					v.setVisibility(View.VISIBLE);
+					
+					if (isDraggableRow(v)) {
+						ViewGroup.LayoutParams params = v.getLayoutParams();
+						params.height = mItemHeightNormal;
+						v.setLayoutParams(params);
+						v.setVisibility(View.VISIBLE);
+					}
 			}
 	}
 	
@@ -264,10 +287,13 @@ public class TouchListView extends ListView {
 									height = mItemHeightExpanded;
 							}
 					}
-					ViewGroup.LayoutParams params = vv.getLayoutParams();
-					params.height = height;
-					vv.setLayoutParams(params);
-					vv.setVisibility(visibility);
+					
+					if (isDraggableRow(vv)) {
+						ViewGroup.LayoutParams params = vv.getLayoutParams();
+						params.height = height;
+						vv.setLayoutParams(params);
+						vv.setVisibility(visibility);
+					}
 			}
 	}
 	
