@@ -104,7 +104,7 @@ is included in this GitHub repo for convenience.
 
 Version
 -------
-This is version v0.3.0 of this module, meaning it is slowly gaining
+This is version v0.3.1 of this module, meaning it is slowly gaining
 acceptance.
 
 Demo
@@ -128,6 +128,7 @@ and stack traces if you are encountering crashes.
 
 Release Notes
 -------------
+- v0.3.1: fixed to better support non-full-screen operation
 - v0.3.0: added support for footer views, explicitly blocked support for header views
 - v0.2.0: converted to Android library project
 

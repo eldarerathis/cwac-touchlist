@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -153,7 +154,12 @@ public class TouchListView extends ListView {
 												// Create a copy of the drawing cache so that it does not get recycled
 												// by the framework when the list tries to clean up memory
 												Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
-												startDragging(bitmap, y);
+												
+												Rect listBounds=new Rect();
+												
+												getGlobalVisibleRect(listBounds, null);
+												
+												startDragging(bitmap, listBounds.left, y);
 												mDragPos = itemnum;
 												mFirstDragPos = mDragPos;
 												mHeight = getHeight();
@@ -372,12 +378,12 @@ public class TouchListView extends ListView {
 			return super.onTouchEvent(ev);
 	}
 	
-	private void startDragging(Bitmap bm, int y) {
+	private void startDragging(Bitmap bm, int x, int y) {
 			stopDragging();
 
 			mWindowParams = new WindowManager.LayoutParams();
-			mWindowParams.gravity = Gravity.TOP;
-			mWindowParams.x = 0;
+			mWindowParams.gravity = Gravity.TOP|Gravity.LEFT;
+			mWindowParams.x = x;
 			mWindowParams.y = y - mDragPoint + mCoordOffset;
 
 			mWindowParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
