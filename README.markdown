@@ -8,7 +8,7 @@ used in the Music application &mdash; you use this to re-arrange
 a playlist. However, that widget is not in the Android SDK
 as of Android 2.2.
 
-`TouchListView` is 99% the Android open source code for
+`TouchListView` is 95% the Android open source code for
 `TouchInterceptor`. `TouchListView` also allows the widget
 to be configured from an XML layout file, replacing some
 hard-wired values that `TouchInterceptor` uses.
@@ -89,10 +89,14 @@ via `setDragListener()`, if you want to know when the user
 has initiated a drag operation.
 
 **NOTE #2**: You cannot use `addHeaderView()` with `TouchListView` due
-to some compatibility issues. You *can* use `addFooterView()` with
+to some compatibility issues.
+
+**NOTE #3**: You can use `addFooterView()` with
 `TouchListView`, but the footer rows cannot contain a widget with
 the `android:id` value you specified for the `grabber` attribute (i.e.,
 they have to be distinguishable from regular draggable rows).
+Also, you cannot use both `remove_mode` and `addFooterView()`,
+due to some outstanding issues with how things are removed.
 
 Dependencies
 ------------
@@ -104,8 +108,9 @@ is included in this GitHub repo for convenience.
 
 Version
 -------
-This is version v0.3.1 of this module, meaning it is slowly gaining
-acceptance.
+This is version v0.4 of this module, meaning it is slowly gaining
+acceptance, though it still has warts due to its under-documented
+original code base.
 
 Demo
 ----
@@ -128,6 +133,7 @@ and stack traces if you are encountering crashes.
 
 Release Notes
 -------------
+- v0.4.0: added code to block unsupported header/footer operations
 - v0.3.1: fixed to better support non-full-screen operation
 - v0.3.0: added support for footer views, explicitly blocked support for header views
 - v0.2.0: converted to Android library project

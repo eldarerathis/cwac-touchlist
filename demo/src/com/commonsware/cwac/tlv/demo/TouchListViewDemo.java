@@ -28,10 +28,6 @@ public class TouchListViewDemo extends ListActivity {
 		setContentView(R.layout.main);
 
 		TouchListView tlv=(TouchListView)getListView();
-		TextView footer=new TextView(this);
-		
-		footer.setText("this is not draggable either");
-		tlv.addFooterView(footer);		
 		adapter=new IconicAdapter();
 		setListAdapter(adapter);
 		

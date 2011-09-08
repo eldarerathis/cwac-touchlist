@@ -23,7 +23,6 @@ import android.graphics.Bitmap;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -97,6 +96,20 @@ public class TouchListView extends ListView {
 	final public void addHeaderView (View v) {
 		throw new RuntimeException("Headers are not supported with TouchListView");
 	}
+  
+  @Override
+  final public void addFooterView (View v, Object data, boolean isSelectable) {
+    if (mRemoveMode == SLIDE_LEFT || mRemoveMode == SLIDE_RIGHT) {
+      throw new RuntimeException("Footers are not supported with TouchListView in conjunction with remove_mode");
+    }
+  }
+  
+  @Override
+  final public void addFooterView (View v) {
+    if (mRemoveMode == SLIDE_LEFT || mRemoveMode == SLIDE_RIGHT) {
+      throw new RuntimeException("Footers are not supported with TouchListView in conjunction with remove_mode");
+    }
+  }
     
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
