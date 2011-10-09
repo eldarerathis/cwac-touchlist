@@ -108,7 +108,7 @@ is included in this GitHub repo for convenience.
 
 Version
 -------
-This is version v0.4 of this module, meaning it is slowly gaining
+This is version v0.4.1 of this module, meaning it is slowly gaining
 acceptance, though it still has warts due to its under-documented
 original code base.
 
@@ -133,6 +133,7 @@ and stack traces if you are encountering crashes.
 
 Release Notes
 -------------
+- v0.4.1: better support for rows with different heights
 - v0.4.0: added code to block unsupported header/footer operations
 - v0.3.1: fixed to better support non-full-screen operation
 - v0.3.0: added support for footer views, explicitly blocked support for header views
