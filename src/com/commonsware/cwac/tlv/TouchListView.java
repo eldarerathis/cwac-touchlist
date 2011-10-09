@@ -213,7 +213,7 @@ public class TouchListView extends ListView {
 	}
 	
 	private int getItemForPosition(int y) {
-			int adjustedy = y - mDragPoint - 32;
+			int adjustedy = y - mDragPoint - (mItemHeightNormal/2);
 			int pos = myPointToPosition(0, adjustedy);
 			if (pos >= 0) {
 					if (pos <= mFirstDragPos) {
