@@ -35,8 +35,9 @@ widget to your XML layout file. You have five customizable
 attributes:
 
  * `normal_height`: the height of one of your regular rows (required)
- * `expanded_height`: the largest possible height of one of
- your rows (defaults to the value of `normal_height`)
+ * `expanded_height`: the height of a row when an item is dragged
+ over it. Use a larger value than `normal_height` to supply space
+ for a drop. Defaults to `normal_height`.
  * `grabber`: the `android:id` value of an icon in your rows
  that should be used as the "grab handle" for the drag-and-drop
  operation (required)
