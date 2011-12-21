@@ -22,10 +22,9 @@ repository.
 Usage
 -----
 You will see a sample project that uses `TouchListView` in the
-`demo/` directory of the repository. This project is designed
-to be built via Ant from the command line. Compile the top-level
-project first via `ant parcel`, then compile and install the
-demo project via `ant demo`.
+`demo/` directory of the repository. It references `TouchListView` as
+an Android library project. You can build it via Eclipse or the
+command line (e.g., `ant clean debug install`).
 
 To work with `TouchListView` in your own project, place the
 library project somewhere and update your project to reference
