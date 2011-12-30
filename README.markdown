@@ -22,10 +22,9 @@ repository.
 Usage
 -----
 You will see a sample project that uses `TouchListView` in the
-`demo/` directory of the repository. This project is designed
-to be built via Ant from the command line. Compile the top-level
-project first via `ant parcel`, then compile and install the
-demo project via `ant demo`.
+`demo/` directory of the repository. It references `TouchListView` as
+an Android library project. You can build it via Eclipse or the
+command line (e.g., `ant clean debug install`).
 
 To work with `TouchListView` in your own project, place the
 library project somewhere and update your project to reference
@@ -131,6 +130,11 @@ If you have questions regarding the use of this code, please post a question
 on [StackOverflow](http://stackoverflow.com/questions/ask) tagged with `commonsware` and `android`. Be sure to indicate
 what CWAC module you are having issues with, and be sure to include source code 
 and stack traces if you are encountering crashes.
+
+If you have encountered what is clearly a bug, please post an [issue](https://github.com/commonsguy/cwac-touchlist/issues). Be certain to include complete steps
+for reproducing the issue.
+
+Do not ask for help via Twitter.
 
 Release Notes
 -------------
