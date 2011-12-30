@@ -167,6 +167,7 @@ public class TouchListView extends ListView {
 												// Create a copy of the drawing cache so that it does not get recycled
 												// by the framework when the list tries to clean up memory
 												Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
+												item.setDrawingCacheEnabled(false);
 												
 												Rect listBounds=new Rect();
 												
