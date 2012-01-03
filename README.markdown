@@ -108,7 +108,7 @@ is included in this GitHub repo for convenience.
 
 Version
 -------
-This is version v0.4.1 of this module, meaning it is slowly gaining
+This is version v0.4.2 of this module, meaning it is slowly gaining
 acceptance, though it still has warts due to its under-documented
 original code base.
 
@@ -138,6 +138,7 @@ Do not ask for help via Twitter.
 
 Release Notes
 -------------
+- v0.4.2: bug fix (see ][issue #9](https://github.com/commonsguy/cwac-touchlist/issues/9))
 - v0.4.1: better support for rows with different heights
 - v0.4.0: added code to block unsupported header/footer operations
 - v0.3.1: fixed to better support non-full-screen operation
