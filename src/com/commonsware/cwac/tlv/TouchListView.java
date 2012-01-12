@@ -315,6 +315,10 @@ public class TouchListView extends ListView {
 						vv.setVisibility(visibility);
 					}
 			}
+			// Request re-layout since we changed the items layout
+			// and not doing this would cause bogus hitbox calculation
+			// in myPointToPosition
+			layoutChildren();
 	}
 	
 	@Override
