@@ -138,6 +138,7 @@ Do not ask for help via Twitter.
 
 Release Notes
 -------------
+- v0.4.3: accepted [pull request to fix hitbox calculation bug](https://github.com/commonsguy/cwac-touchlist/pull/11)
 - v0.4.2: bug fix (see [issue #9](https://github.com/commonsguy/cwac-touchlist/issues/9))
 - v0.4.1: better support for rows with different heights
 - v0.4.0: added code to block unsupported header/footer operations
